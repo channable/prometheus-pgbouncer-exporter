@@ -199,17 +199,15 @@ class PgbouncerMetricsCollector():
         # Filter out pools that have no client or server connections.
         return filter(
             lambda item: sum(
-                [
-                    item[x]
-                    for x in [
-                        "cl_active",
-                        "cl_waiting",
-                        "sv_active",
-                        "sv_idle",
-                        "sv_used",
-                        "sv_tested",
-                        "sv_login",
-                    ]
+                item[x]
+                for x in [
+                    "cl_active",
+                    "cl_waiting",
+                    "sv_active",
+                    "sv_idle",
+                    "sv_used",
+                    "sv_tested",
+                    "sv_login",
                 ]
             )
             > 0,
